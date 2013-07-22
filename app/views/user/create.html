@@ -1,0 +1,41 @@
+<div class="hero-unit">
+
+    <div class="alert" ng-show="error || warning" ng-class="{'alert-error':error, 'alert-warning':warning}">
+        <button type="button" class="close" ng-click="error=false;warning=false;">&times;</button>
+        <p>{{answer}}</p>
+    </div>
+
+    <form ng-submit="create()">
+        <input class="span12" type="text" ng-model="mainEmail" placeholder="{{'user.create.mainEmail' | i18n}}"/>
+        <input class="span12" type="text" ng-model="name" placeholder="{{'user.create.name' | i18n}}"/>
+        <input class="span12" type="password" ng-model="password" placeholder="{{'user.password' | i18n}}"/>
+
+        <ul class="unstyled">
+            <li ng-repeat="mail in emails">
+                <i class="icon-minus-sign" ng-click="emails.splice(emails.indexOf(mail),1)"></i>
+                <span> {{mail}}</span>
+            </li>
+        </ul>
+        <div class="input-append span12">
+            <input class="span11" type="text" ng-model="newMail" placeholder="{{'user.create.add.mail' | i18n}}">
+            <span class="add-on">
+                <i ng-click="addMail()" class="icon-plus icon-white"></i>
+            </span>
+        </div>
+
+        <ul class="unstyled">
+            <li ng-repeat="phone in phones">
+                <i class="icon-minus-sign" ng-click="phones.splice(phones.indexOf(phone),1)"></i>
+                <span> {{phone}}</span>
+            </li>
+        </ul>
+        <div class="input-append span12">
+            <input class="span11" type="text" ng-model="newPhone" placeholder="{{'user.create.add.phone' | i18n}}">
+            <span class="add-on">
+                <i ng-click="addPhone()" class="icon-plus icon-white"></i>
+            </span>
+        </div>
+
+        <button type="submit" class="btn-block btn-large btn btn-success">{{'user.create.action' | i18n}}</button>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="hero-unit">
+
+    <div class="alert" ng-show="error || warning" ng-class="{'alert-error':error, 'alert-warning':warning}">
+        <button type="button" class="close" ng-click="error=false;warning=false;">&times;</button>
+        <p>{{answer}}</p>
+    </div>
+
+    <form ng-submit="login()">
+        <input class="span12" type="text" ng-model="mainEmail" placeholder="{{'user.login' | i18n}}"/>
+        <input class="span12" type="password" ng-model="password" placeholder="{{'user.password' | i18n}}"/>
+        <button type="submit" class="btn-block btn-large btn btn-success">{{'user.login.action' | i18n}}</button>
+    </form>
+
+    <hr>
+
+    <a href="#/create" class="btn btn-large btn-block">{{'user.create' | i18n}}</a>
+</div>

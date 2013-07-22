@@ -1,0 +1,11 @@
+{
+    "user.login"                : "Your email",
+    "user.password"             : "Your password",
+    "user.login.action"         : "Login to ZugZug!",
+    "user.create"               : "Create an account",
+    "user.create.action"        : "Create your account!",
+    "user.create.mainEmail"     : "Your main email",
+    "user.create.name"          : "Your name",
+    "user.create.add.mail"      : "Add an email",
+    "user.create.add.phone"     : "Add a phone"
+}
