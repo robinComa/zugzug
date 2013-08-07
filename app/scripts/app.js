@@ -6,15 +6,19 @@ angular.module('zugzugApp', ['zugzugApp.services.user', 'zugzugApp.services.i18n
 
         .when('/', {
             templateUrl: 'views/user/login.html',
-            controller: 'LoginCtrl'
+            controller: 'UserLoginCtrl'
         })
         .when('/login', {
             templateUrl: 'views/user/login.html',
-            controller: 'LoginCtrl'
+            controller: 'UserLoginCtrl'
         })
         .when('/create', {
             templateUrl: 'views/user/create.html',
-            controller: 'CreateCtrl'
+            controller: 'UserCreateCtrl'
+        })
+        .when('/contact/list', {
+            templateUrl: 'views/contact/list.html',
+            controller: 'ContactListCtrl'
         })
         .otherwise({
             redirectTo: '/'

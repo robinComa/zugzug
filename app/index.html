@@ -26,10 +26,12 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div class="row-fluid">
-        <!-- Add your site or application content here -->
-        <div class="container offset1 span10" ng-view></div>
+    <div class="navbar navbar-fixed-top">
+        <a href="#" class="navbar-brand">Zug Zug</a>
     </div>
+
+        <!-- Add your site or application content here -->
+        <div id="container" ng-view></div>
 
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -44,6 +46,7 @@
     <script src="scripts/services/user.js"></script>
     <script src="scripts/controllers/user/login.js"></script>
     <script src="scripts/controllers/user/create.js"></script>
+    <script src="scripts/controllers/contact/list.js"></script>
     <!-- endbuild -->
 
   </body>

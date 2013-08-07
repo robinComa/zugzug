@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zugzugApp')
-  .controller('LoginCtrl', function ($scope, User, $http) {
+  .controller('UserLoginCtrl', function ($scope, User, $http, $location) {
         $scope.login = function(){
         $scope.error = false;
         $scope.warning = false;
@@ -9,7 +9,7 @@ angular.module('zugzugApp')
             mainEmail : this.mainEmail,
             password : this.password
         }, function(data){
-            $scope.answer = data;
+            $location.path('contact/list')
         }, function(data){
             switch (data.status){
                 case 0:

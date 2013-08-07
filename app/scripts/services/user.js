@@ -15,7 +15,7 @@ angular.module('zugzugApp.services.user', ['ngResource'])
                         callbackSuccess(response);
                     }).error(function(response) {
                         //callbackError(response); TODO remove comment
-                        callbackSuccess(fakeUser);
+                            callbackSuccess(fakeUser);
                     });
                 },
                 create: function(attr, callbackSuccess, callbackError){

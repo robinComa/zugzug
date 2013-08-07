@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zugzugApp')
-    .controller('CreateCtrl', function ($scope, User) {
+    .controller('UserCreateCtrl', function ($scope, User) {
 
         $scope.addMail = function(){
             if(!$scope.emails){
@@ -41,5 +41,5 @@ angular.module('zugzugApp')
                         $scope.answer = data;
                 }
             });
-        }
+        };
     });
