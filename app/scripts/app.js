@@ -20,7 +20,9 @@ angular.module('zugzugApp', ['zugzugApp.services.user', 'zugzugApp.services.i18n
             redirectTo: '/'
         });
 
-  }).run(function($rootScope, I18n) {
+  }).config(['$httpProvider', function ($httpProvider) {
+        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    }]).run(function($rootScope, I18n) {
 
         /**Langage detection*/
         var langage = (navigator.browserLanguage ? navigator.browserLanguage : navigator.language);
@@ -47,5 +49,5 @@ angular.module('zugzugApp', ['zugzugApp.services.user', 'zugzugApp.services.i18n
         };
 
         /** Config */
-        $rootScope.backend = 'http://ec2-54-214-124-166.us-west-2.compute.amazonaws.com:9090/mayo/rest/mayo/:method';
+        $rootScope.backend = 'http://ec2-54-214-124-166.us-west-2.compute.amazonaws.com\\:9090/mayo/rest/mayo/';
   });

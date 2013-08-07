@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('zugzugApp')
-  .controller('LoginCtrl', function ($scope, User) {
-    $scope.login = function(){
+  .controller('LoginCtrl', function ($scope, User, $http) {
+        $scope.login = function(){
         $scope.error = false;
         $scope.warning = false;
         User.login({
