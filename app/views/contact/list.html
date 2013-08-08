@@ -1,20 +1,16 @@
 <ul class="nav nav-tabs nav-justified">
     <li class="active">
-        <a href="#facebook" data-toggle="tab">Facebook</a>
+        <a href="#facebook" data-toggle="tab"><i class="icon-facebook icon-3x"></i></a>
     </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="facebook">
         <ul class="list-group">
-            <a class="list-group-item" ng-repeat="friend in facebookFriends" ng-class="{active:active}" ng-click="active=!active">
-                <h4 class="list-group-item-heading">
-                    <img ng-src="{{friend.picture}}" class="col-1 col-lg-1"/>
-                    {{friend.name}}
-                </h4>
-                <p class="list-group-item-text">
-                    ...
-                </p>
+            <a class="list-group-item" ng-repeat="friend in facebookFriends | orderBy:'name'" ng-class="{active:active}" ng-click="clickFacebookFriend(friend.id)">
+                <img ng-src="{{friend.avatar}}" class="img-responsive img-polaroid"/>
+                <strong>{{friend.name}}</strong>
+                <i class="pull-right icon-3x" ng-class="{'icon-heart':active&&!loading,'icon-question':!active&&!loading, 'icon-spinner icon-spin':loading}"></i>
             </a>
         </ul>
     </div>

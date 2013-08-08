@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zugzugApp')
-    .controller('UserCreateCtrl', function ($scope, User) {
+    .controller('UserCreateCtrl', function ($rootScope, $scope, User) {
 
         $scope.addMail = function(){
             if(!$scope.emails){
@@ -34,11 +34,11 @@ angular.module('zugzugApp')
                 switch (data.status){
                     case 0:
                         $scope.error = true;
-                        $scope.answer = data;
+                        $scope.answer = $rootScope.i18n.get('server.response.down');
                         break;
                     default :
                         $scope.error = true;
-                        $scope.answer = data;
+                        $scope.answer = $rootScope.i18n.get('server.response.undefined');
                 }
             });
         };

@@ -3,9 +3,10 @@
     "user.login.placeholder"            : "ex : your.email@sample.com",
     "user.password"                     : "Your password",
     "user.password.placeholder"         : "ex : P@$$w0rd",
-    "user.login.action"                 : "Login to ZugZug!",
+    "user.login.action"                 : "Login to ZugZug",
+    "user.login.facebook"               : "Login with Facebook",
     "user.create"                       : "Create an account",
-    "user.create.action"                : "Create your account!",
+    "user.create.action"                : "Create your account",
     "user.create.mainEmail"             : "Your main email",
     "user.create.mainEmail.placeholder" : "ex : your.email@sample.com",
     "user.create.name"                  : "Your name",
@@ -13,5 +14,10 @@
     "user.create.add.mail"              : "Add an email",
     "user.create.add.mail.placeholder"  : "ex : your.other.email@sample.com",
     "user.create.add.phone"             : "Add a phone",
-    "user.create.add.phone.placeholder" : "ex : +336 67 78 56 34"
+    "user.create.add.phone.placeholder" : "ex : +336 67 78 56 34",
+
+    "server.response.no.response"       : "The service is temporarily unavailable",
+    "server.response.down"              : "The service is temporarily unavailable",
+    "server.response.facebook.error"    : "You could not connect with facebook",
+    "server.response.undefined"         : "The service is temporarily unavailable"
 }
