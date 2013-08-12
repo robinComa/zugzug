@@ -14,11 +14,11 @@ angular.module('zugzugApp', [
             templateUrl: 'views/user/login.html',
             controller: 'UserLoginCtrl'
         })
-        .when('/login', {
+        .when('/user/login', {
             templateUrl: 'views/user/login.html',
             controller: 'UserLoginCtrl'
         })
-        .when('/create', {
+        .when('/user/create', {
             templateUrl: 'views/user/create.html',
             controller: 'UserCreateCtrl'
         })

@@ -4,9 +4,16 @@ angular.module('zugzugApp')
   .controller('UserLoginCtrl', function ($rootScope, $scope, User, $http, $location) {
 
         var loginSuccess = function(data){
-            $rootScope.user = data;
-            $scope.$apply(function(){
-                $location.path('contact/list');
+            User.exist(data, function(data){
+                $scope.$apply(function(){
+                    $rootScope.user = data;
+                    $location.path('contact/list');
+                });
+            }, function(){
+                $scope.$apply(function(){
+                    $rootScope.user = data;
+                    $location.path('user/create');
+                });
             });
         };
 

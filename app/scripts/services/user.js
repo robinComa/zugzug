@@ -12,6 +12,15 @@ angular.module('zugzugApp.services.user', ['ngResource'])
                         callbackError(response);
                     });
                 },
+                exist: function(attr, callbackSuccess, callbackError){
+                    callbackError();
+                    return;
+                    $http.post($rootScope.configuration.server + 'existUser', attr).success(function(response) {
+                        callbackSuccess(response);
+                    }).error(function(response) {
+                        callbackError(response);
+                    });
+                },
                 create: function(attr, callbackSuccess, callbackError){
                     $http.post($rootScope.configuration.server + 'registerUser', attr).success(function(response) {
                         callbackSuccess(response);
