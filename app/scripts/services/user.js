@@ -6,6 +6,11 @@ angular.module('zugzugApp.services.user', ['ngResource'])
 
             return {
                 login: function(attr, callbackSuccess, callbackError){
+                    //TODO remove
+                    callbackSuccess();
+                    //callbackError();
+                    return;
+
                     $http.post($rootScope.configuration.server + 'login', attr).success(function(response) {
                         callbackSuccess(response);
                     }).error(function(response) {
@@ -13,8 +18,11 @@ angular.module('zugzugApp.services.user', ['ngResource'])
                     });
                 },
                 exist: function(attr, callbackSuccess, callbackError){
+                    //TODO remove
+                    //callbackSuccess();
                     callbackError();
                     return;
+
                     $http.post($rootScope.configuration.server + 'existUser', attr).success(function(response) {
                         callbackSuccess(response);
                     }).error(function(response) {
@@ -22,6 +30,11 @@ angular.module('zugzugApp.services.user', ['ngResource'])
                     });
                 },
                 create: function(attr, callbackSuccess, callbackError){
+                    //TODO remove
+                    callbackSuccess();
+                    //callbackError();
+                    return;
+
                     $http.post($rootScope.configuration.server + 'registerUser', attr).success(function(response) {
                         callbackSuccess(response);
                     }).error(function(response) {
@@ -29,19 +42,27 @@ angular.module('zugzugApp.services.user', ['ngResource'])
                     });
                 },
                 addFacebookFriend : function(id, callbackSuccess, callbackError){
+                    //TODO remove
+                    callbackSuccess();
+                    //callbackError();
+                    return;
+
                     $http.post($rootScope.configuration.server + 'addFacebookFriend', id).success(function(response) {
                         callbackSuccess();
                     }).error(function(response) {
-                        //callbackError(); TODO remove comment
-                        callbackSuccess();
+                        callbackError();
                     });
                 },
                 removeFacebookFriend : function(id, callbackSuccess, callbackError){
+                    //TODO remove
+                    callbackSuccess();
+                    //callbackError();
+                    return;
+
                     $http.post($rootScope.configuration.server + 'removeFacebookFriend', id).success(function(response) {
                         callbackSuccess();
                     }).error(function(response) {
-                        //callbackError(); TODO remove comment
-                        callbackSuccess();
+                        callbackError();
                     });
                 }
             }

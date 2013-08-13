@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zugzugApp')
-  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $http, $location) {
+  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $location) {
 
         var loginSuccess = function(data){
             User.exist(data, function(data){

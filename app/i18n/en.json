@@ -2,6 +2,7 @@
     "user.login"                        : "Your email",
     "user.login.placeholder"            : "ex : your.email@sample.com",
     "user.password"                     : "Your password",
+    "user.password2"                    : "Repeat your password",
     "user.password.placeholder"         : "ex : P@$$w0rd",
     "user.login.action"                 : "Login to ZugZug",
     "user.login.facebook"               : "Login with Facebook",
@@ -11,7 +12,7 @@
     "user.create.mainEmail"             : "Your main email",
     "user.create.mainEmail.placeholder" : "ex : your.email@sample.com",
     "user.create.birthday"              : "Your Birthday",
-    "user.create.birthday.placeholder"  : "ex : 13/09/1988",
+    "user.create.birthday.placeholder"  : "ex : 1987/09/13",
     "user.create.name"                  : "Your name",
     "user.create.name.placeholder"      : "ex : John Doe",
     "user.create.gender"                : "Your gender",
@@ -30,6 +31,8 @@
     "user.create.guc.modal.content"     : "..............................................",
     "user.create.16y"                   : "Age confirmation",
     "user.create.16y.info"              : "I certify I'm more than 16 years old",
+
+    "contact.filter"                    : "Filter your contacts",
 
     "server.response.no.response"       : "The service is temporarily unavailable",
     "server.response.down"              : "The service is temporarily unavailable",

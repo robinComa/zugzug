@@ -6,12 +6,13 @@
 
 <div class="tab-content">
     <div class="tab-pane active" id="facebook">
-        <ul class="list-group">
-            <a class="list-group-item" ng-repeat="friend in facebookFriends | orderBy:'name'" ng-class="{active:active}" ng-click="clickFacebookFriend(friend.id)">
-                <img ng-src="{{friend.avatar}}" class="img-responsive img-polaroid"/>
+        <input type="text" ng-model="filter" ng-init="filter=''" class="form-control" placeholder="{{'contact.filter' | i18n}} ...">
+        <div class="list-group">
+            <a href="" class="list-group-item" ng-repeat="friend in facebookFriends | orderBy:'name' | filter:{'name':filter}" ng-click="clickFacebookFriend(friend.id)" ng-class="{active:active}">
+                <img ng-src="{{friend.avatar}}" class="img-responsive img-thumbnail"/>
                 <strong>{{friend.name}}</strong>
                 <i class="pull-right icon-3x" ng-class="{'icon-heart':active&&!loading,'icon-question':!active&&!loading, 'icon-spinner icon-spin':loading}"></i>
             </a>
-        </ul>
+        </div>
     </div>
 </div>

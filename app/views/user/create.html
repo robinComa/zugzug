@@ -10,17 +10,19 @@
         <div class="form-group ">
             <label for="inputAvatar" class="col-lg-2 col-12 control-label">{{'user.create.avatar' | i18n}}</label>
             <div class="col-12 col-lg-10">
-                <div class="col-6 col-lg-5">
+                <div ng-hide="otherLogin" class="col-6 col-lg-5">
                     <input type="file" class="form-control" id="inputAvatar"/>
                 </div>
                 <div class="col-6 col-lg-5">
-                    <img ng-src="{{avatar}}" class="img-responsive img-polaroid"/>
+                    <img ng-src="{{avatar}}" class="img-responsive img-thumbnail"/>
                 </div>
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.mainEmail.$valid, 'has-success': createUserForm.mainEmail.$valid}">
-            <label for="inputMainMail" class="col-lg-2 col-12 control-label">{{'user.create.mainEmail' | i18n}}</label>
+        <div ng-hide="otherLogin" class="form-group" ng-class="{'has-error':!createUserForm.mainEmail.$valid, 'has-success': createUserForm.mainEmail.$valid}">
+            <label for="inputMainMail" class="col-lg-2 col-12 control-label">
+                {{'user.create.mainEmail' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-lg-12 col-12">
                     <input type="email" required class="form-control" id="inputMainMail" name="mainEmail" ng-model="mainEmail" placeholder="{{'user.create.mainEmail.placeholder' | i18n}}"/>
@@ -29,7 +31,9 @@
         </div>
 
         <div class="form-group" ng-class="{'has-error':!createUserForm.name.$valid, 'has-success': createUserForm.name.$valid}">
-            <label for="inputName" class="col-lg-2 col-12 control-label">{{'user.create.name' | i18n}}</label>
+            <label for="inputName" class="col-lg-2 col-12 control-label">
+                {{'user.create.name' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-lg-12 col-12">
                     <input type="text" required class="form-control" id="inputName" name="name" ng-model="name" placeholder="{{'user.create.name.placeholder' | i18n}}"/>
@@ -38,7 +42,9 @@
         </div>
 
         <div class="form-group" ng-class="{'has-error':!createUserForm.gender.$valid, 'has-success': createUserForm.gender.$valid}">
-            <label class="col-lg-2 col-12 control-label">{{'user.create.gender' | i18n}}</label>
+            <label class="col-lg-2 col-12 control-label">
+                {{'user.create.gender' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-6 col-lg-6">
                     <label for="optionsRadiosMale">
@@ -55,32 +61,47 @@
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.birthday.$valid, 'has-success': createUserForm.birthday.$valid}">
-            <label for="inputBirthday" class="col-lg-2 col-12 control-label">{{'user.create.birthday' | i18n}}</label>
+        <div class="form-group" ng-class="{'has-error':!createUserForm.birthday.$valid || !birthdayIsValid(), 'has-success': createUserForm.birthday.$valid && birthdayIsValid()}">
+            <label for="inputBirthday" class="col-lg-2 col-12 control-label">
+                {{'user.create.birthday' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-lg-12 col-12">
-                    <input type="text" required ng-pattern="/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/" class="form-control" id="inputBirthday" name="birthday" ng-model="birthday" placeholder="{{'user.create.birthday.placeholder' | i18n}}"/>
+                    <input type="text" required ng-pattern="/^[0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2}$/" class="form-control" id="inputBirthday" name="birthday" ng-model="birthday" placeholder="{{'user.create.birthday.placeholder' | i18n}}"/>
                 </div>
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.password.$valid, 'has-success': createUserForm.password.$valid}">
-            <label for="inputPassword" class="col-lg-2 col-12 control-label">{{'user.password' | i18n}}</label>
+        <div ng-hide="otherLogin" class="form-group" ng-class="{'has-error':!createUserForm.password1.$valid, 'has-success': createUserForm.password1.$valid}">
+            <label for="inputPassword1" class="col-lg-2 col-12 control-label">
+                {{'user.password' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-lg-12 col-12">
-                    <input type="password" required class="form-control" id="inputPassword" name="password" ng-model="password" placeholder="{{'user.password.placeholder' | i18n}}"/>
+                    <input type="password" required ng-minlength="6" class="form-control" id="inputPassword1" name="password1" ng-model="password1" placeholder="{{'user.password.placeholder' | i18n}}"/>
                 </div>
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.newMail.$valid, 'has-success': createUserForm.newMail.$valid}">
+        <div ng-hide="otherLogin" class="form-group" ng-class="{'has-error':!createUserForm.password2.$valid || !passwordAreEquals(), 'has-success': createUserForm.password2.$valid && passwordAreEquals()}">
+            <label for="inputPassword2" class="col-lg-2 col-12 control-label">
+                {{'user.password2' | i18n}}
+            </label>
+            <div class="col-12 col-lg-10">
+                <div class="col-lg-12 col-12">
+                    <input type="password" required class="form-control" id="inputPassword2" name="password2" ng-model="password2" placeholder="{{'user.password.placeholder' | i18n}}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':!createUserForm.newMail.$valid, 'has-success': createUserForm.newMail.$valid && newMail}">
             <label for="inputOtherMail" class="col-lg-2 col-12 control-label">{{'user.create.add.mail' | i18n}}</label>
             <div class="col-lg-10">
-                <button ng-repeat="mail in emails" type="button" class="btn btn-primary btn-xs" ng-click="emails.splice(emails.indexOf(mail),1)">
-                    {{mail}}
-                    <i class="icon-remove-circle"></i>
-                </button>
                 <div class="col-lg-12">
+                    <button ng-repeat="mail in emails" type="button" class="btn btn-primary btn-xs" ng-click="emails.splice(emails.indexOf(mail),1)">
+                        {{mail}}
+                        <i class="icon-remove-circle"></i>
+                    </button>
                     <div class="input-group">
                         <input class="form-control" id="inputOtherMail" type="email" name="newMail" ng-model="newMail" placeholder="{{'user.create.add.mail.placeholder' | i18n}}"/>
                         <span class="input-group-btn">
@@ -89,24 +110,24 @@
                             </button>
                         </span>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <p class="text-muted">
-                        <i class="icon-info-sign"></i>
-                        {{'user.create.add.mail.info' | i18n}}
-                    </p>
+                    <div class="col-lg-12">
+                        <p class="text-muted">
+                            <i class="icon-info-sign"></i>
+                            {{'user.create.add.mail.info' | i18n}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.newPhone.$valid, 'has-success': createUserForm.newPhone.$valid}">
+        <div class="form-group" ng-class="{'has-error':!createUserForm.newPhone.$valid, 'has-success': createUserForm.newPhone.$valid && newPhone}">
             <label for="inputTelephone" class="col-lg-2 col-12 control-label">{{'user.create.add.phone' | i18n}}</label>
             <div class="col-lg-10">
-                <button type="button" ng-repeat="phone in phones" class="btn btn-primary btn-xs" ng-click="phones.splice(phones.indexOf(phone),1)">
-                    {{phone}}
-                    <i class="icon-remove-circle"></i>
-                </button>
                 <div class="col-lg-12">
+                    <button type="button" ng-repeat="phone in phones" class="btn btn-primary btn-xs" ng-click="phones.splice(phones.indexOf(phone),1)">
+                        {{phone}}
+                        <i class="icon-remove-circle"></i>
+                    </button>
                     <div class="input-group">
                         <input class="form-control"ng-pattern="/^[0-9\+][0-9\s]{5,20}$/" id="inputTelephone" type="text" name="newPhone" ng-model="newPhone" placeholder="{{'user.create.add.phone.placeholder' | i18n}}"/>
                         <span class="input-group-btn">
@@ -115,18 +136,20 @@
                             </button>
                         </span>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <p class="text-muted">
-                        <i class="icon-info-sign"></i>
-                        {{'user.create.add.phone.info' | i18n}}
-                    </p>
+                    <div class="col-lg-12">
+                        <p class="text-muted">
+                            <i class="icon-info-sign"></i>
+                            {{'user.create.add.phone.info' | i18n}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="form-group" ng-class="{'has-error':!createUserForm.guc.$valid, 'has-success': createUserForm.guc.$valid}">
-            <label for="inputGuc" class="col-lg-2 col-12 control-label">{{'user.create.guc' | i18n}}</label>
+            <label for="inputGuc" class="col-lg-2 col-12 control-label">
+                {{'user.create.guc' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-lg-8 col-8">
                     <label for="inputGuc">
@@ -143,12 +166,14 @@
             </div>
         </div>
 
-        <div class="form-group" ng-class="{'has-error':!createUserForm.y16.$valid, 'has-success': createUserForm.y16.$valid}">
-            <label for="input16y" class="col-lg-2 col-12 control-label">{{'user.create.16y' | i18n}}</label>
+        <div class="form-group" ng-class="{'has-error':!createUserForm.y16.$valid || !birthdayIsValid(), 'has-success': createUserForm.y16.$valid && birthdayIsValid()}">
+            <label for="input16y" class="col-lg-2 col-12 control-label">
+                {{'user.create.16y' | i18n}}
+            </label>
             <div class="col-12 col-lg-10">
                 <div class="col-12 col-lg-12">
                     <label for="input16y">
-                        <input type="checkbox" required id="input16y" name="y16" ng-model="y16"/>
+                        <input type="checkbox" required id="input16y" name="y16" ng-model="y16" ng-change="moreThan16Change()"/>
                         {{'user.create.16y.info' | i18n}}
                     </label>
                 </div>
@@ -157,7 +182,7 @@
 
         <div class="form-group">
             <div class="col-lg-12">
-                <button type="submit" class="btn btn-default btn-lg btn-block">{{'user.create.action' | i18n}}</button>
+                <button type="submit" ng-disabled="!formIsValid()" class="btn btn-default btn-lg btn-block">{{'user.create.action' | i18n}}</button>
             </div>
         </div>
     </form>

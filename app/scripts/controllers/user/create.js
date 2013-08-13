@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('zugzugApp')
-    .controller('UserCreateCtrl', function ($rootScope, $scope, User) {
-
+    .controller('UserCreateCtrl', function ($rootScope, $scope, User, $location) {
         if($rootScope.user){
+            $scope.otherLogin = true;//Not classic login (ex : FB, google, ...)
+            $scope.auth = 'Facebook';
+            $scope.password1 = $scope.password2 = 'UnusedPassword';//For form validation
+
             $scope.mainEmail = $rootScope.user.email;
             $scope.name = $rootScope.user.name;
             $scope.avatar = $rootScope.user.avatar;
@@ -29,18 +32,57 @@ angular.module('zugzugApp')
             }
         };
 
+        $scope.passwordAreEquals = function(){
+            return $scope.password1 == $scope.password2;
+        };
+
+        $scope.birthdayIsValid = function(){
+            var birthday = new Date($scope.birthday);
+            if(isNaN(birthday.getTime())){
+                return false;
+            }
+            var now = new Date();
+            birthday.setFullYear(birthday.getFullYear() + 16);
+            return now >= birthday;
+        };
+
+        $scope.moreThan16Change = function(){
+            if(this.y16){
+                if(!$scope.birthdayIsValid()){
+                    this.y16 = false;
+                    $('#inputBirthday').focus();
+                    $("html, body").animate({ scrollTop: $('#inputBirthday').offset().top - 80 }, 1000);
+                }
+            }
+        };
+
+        $scope.formIsValid = function(){
+            return $scope.createUserForm.$valid && $scope.passwordAreEquals && $scope.birthdayIsValid;
+        };
+
         $scope.create = function(){
-            if($scope.createUserForm.$valid){
+            if($scope.formIsValid()){
                 $scope.error = false;
                 $scope.warning = false;
-                User.create({
+
+                var user = {
+                    avatar      : this.avatar,
                     mainEmail   : this.mainEmail,
                     name        : this.name,
-                    password    : this.password,
+                    gender      : this.gender,
+                    birthday    : this.birthday,
                     emails      : $scope.emails,
-                    phones      : this.phones
-                }, function(data){
-                    $scope.answer = data;
+                    phones      : $scope.phones
+                };
+
+                if($scope.otherLogin){
+                    user.auth = $scope.auth;
+                }else{
+                    user.password = this.password1;
+                }
+
+                User.create(user, function(data){
+                    $location.path('/contact/list')
                 }, function(data){
                     switch (data.status){
                         case 0:
