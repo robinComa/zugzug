@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('zugzugApp')
-  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $location) {
+  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $location, Facebook, $cookieStore) {
 
-        var loginSuccess = function(data){
+        var loginSuccess = function(){
+            $rootScope.isAuth = true;
+            $location.path('contact/list');
+        };
+
+        var loginApiSuccess = function(data){
             User.exist(data, function(data){
                 $scope.$apply(function(){
-                    $rootScope.user = data;
-                    $location.path('contact/list');
+                    loginSuccess();
                 });
             }, function(){
                 $scope.$apply(function(){
@@ -35,13 +39,16 @@ angular.module('zugzugApp')
                     $scope.error = true;
                     $scope.answer = $rootScope.i18n.get('server.response.undefined');
             }
-        }
-
-        var facebook = new $rootScope.Facebook(loginSuccess);
-
-        $scope.loginFacebook = function(){
-            facebook.login(loginSuccess, loginError('FB-ERROR'));
         };
+
+        Facebook.isReady(function(){
+            $scope.$apply(function(){
+                $scope.facebookIsReady = true;
+                $scope.loginFacebook = function(){
+                    Facebook.login(loginApiSuccess, loginError('FB-ERROR'));
+                };
+            });
+        });
 
         $scope.login = function(){
             $scope.error = false;

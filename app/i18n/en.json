@@ -5,6 +5,7 @@
     "user.password2"                    : "Repeat your password",
     "user.password.placeholder"         : "ex : P@$$w0rd",
     "user.login.action"                 : "Login to ZugZug",
+    "user.logout.action"                : "Logout",
     "user.login.facebook"               : "Login with Facebook",
     "user.create"                       : "Create an account",
     "user.create.action"                : "Create your account",

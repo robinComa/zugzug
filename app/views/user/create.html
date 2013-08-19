@@ -105,7 +105,7 @@
                     <div class="input-group">
                         <input class="form-control" id="inputOtherMail" type="email" name="newMail" ng-model="newMail" placeholder="{{'user.create.add.mail.placeholder' | i18n}}"/>
                         <span class="input-group-btn">
-                            <button type="button" ng-click="addMail()" class="btn btn-primary btn-xs">
+                            <button type="button" ng-disabled="!createUserForm.newMail.$valid || !newMail" ng-click="addMail()" class="btn btn-primary btn-xs">
                                 <i class="icon-plus icon-white"></i>
                             </button>
                         </span>
@@ -131,7 +131,7 @@
                     <div class="input-group">
                         <input class="form-control"ng-pattern="/^[0-9\+][0-9\s]{5,20}$/" id="inputTelephone" type="text" name="newPhone" ng-model="newPhone" placeholder="{{'user.create.add.phone.placeholder' | i18n}}"/>
                         <span class="input-group-btn">
-                            <button type="button" ng-click="addPhone()" class="btn btn-primary btn-xs">
+                            <button type="button" ng-disabled="!createUserForm.newPhone.$valid || !newPhone" ng-click="addPhone()" class="btn btn-primary btn-xs">
                                 <i class="icon-plus icon-white"></i>
                             </button>
                         </span>

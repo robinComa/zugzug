@@ -1,15 +1,42 @@
 'use strict';
 
 angular.module('zugzugApp')
-    .controller('ContactListCtrl', function ($rootScope, $scope, User) {
+    .controller('ContactListCtrl', function ($rootScope, $scope, User, I18n, $cookieStore, Facebook) {
 
-        var facebook = new $rootScope.Facebook();
+        $scope.user = $cookieStore.get('user');
 
-        facebook.getFriends(function(friends){
-            $scope.$apply(function() {
-                $scope.facebookFriends = friends;
+        $scope.contactsAvailable = {
+            facebook : false
+        };
+
+        var facebookContactsShow = function(){
+            User.activeApi('facebook', function(){
+                $scope.contactsAvailable.facebook = true;
+                Facebook.getFriends(function(friends){
+                    $scope.$apply(function() {
+                        $scope.facebookFriends = friends;
+                    });
+                });
+
+            }, function(){
+
             });
+        }
+
+        Facebook.login(function(){
+            if($rootScope.utils.isInArray('facebook', $scope.user.api)){
+                $scope.contactsAvailable.facebook = true;
+                facebookContactsShow();
+            }
         });
+
+        $scope.addFacebookContacts = function(){
+            facebookContactsShow();
+        };
+
+        $scope.alreadyFacebookChecked = function(id){
+            return $rootScope.utils.isInArray(id, $scope.user.check.facebook);
+        };
 
         $scope.clickFacebookFriend = function(id){
 

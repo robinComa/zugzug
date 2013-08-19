@@ -1,4 +1,4 @@
-angular.module('zugzugApp.modules.i18n', []).run(function($rootScope, $rootScope, I18n) {
+angular.module('i18n', []).run(function($rootScope, I18n) {
     /**Langage detection*/
     var langage = (navigator.browserLanguage ? navigator.browserLanguage : navigator.language);
     if (langage.indexOf('en') > -1) langage = 'en';

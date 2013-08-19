@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('zugzugApp', [
+        'ngCookies',
         'zugzugApp.services.user',
         'zugzugApp.services.i18n',
         'zugzugApp.filters.i18n',
-        'zugzugApp.modules.i18n',
-        'zugzugApp.modules.facebook',
-        'zugzugApp.modules.configuration'
+        'zugzugApp.modules.configuration',
+        'utils',
+        'routeAuth',
+        'i18n',
+        'facebook'
+
     ]).config(function ($routeProvider) {
     $routeProvider
 
