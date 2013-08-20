@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('zugzugApp')
-  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $location, Facebook, $cookieStore) {
+  .controller('UserLoginCtrl', function ($rootScope, $scope, User, $location, Facebook, $cookieStore, $i18n) {
 
         var loginSuccess = function(){
             $rootScope.isAuth = true;
             $location.path('contact/list');
         };
+
+        //$i18n.changeLanguage('en');
 
         var loginApiSuccess = function(data){
             User.exist(data, function(data){
@@ -25,19 +27,19 @@ angular.module('zugzugApp')
             switch (status){
                 case undefined:
                     $scope.error = true;
-                    $scope.answer = $rootScope.i18n.get('server.response.no.response');
+                    $scope.answer = $i18n.get('server.response.no.response');
                     break;
                 case 0:
                     $scope.error = true;
-                    $scope.answer = $rootScope.i18n.get('server.response.down');
+                    $scope.answer = $i18n.get('server.response.down');
                     break;
                 case 'FB-ERROR':
                     $scope.error = true;
-                    $scope.answer = $rootScope.i18n.get('server.response.facebook.error');
+                    $scope.answer = $i18n.get('server.response.facebook.error');
                     break;
                 default :
                     $scope.error = true;
-                    $scope.answer = $rootScope.i18n.get('server.response.undefined');
+                    $scope.answer = $i18n.get('server.response.undefined');
             }
         };
 

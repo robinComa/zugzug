@@ -2,13 +2,11 @@
 
 angular.module('zugzugApp', [
         'ngCookies',
+        'ngI18n',
         'zugzugApp.services.user',
-        'zugzugApp.services.i18n',
-        'zugzugApp.filters.i18n',
         'zugzugApp.modules.configuration',
         'utils',
         'routeAuth',
-        'i18n',
         'facebook'
 
     ]).config(function ($routeProvider) {
