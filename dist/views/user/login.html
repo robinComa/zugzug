@@ -1,0 +1,46 @@
+<div class="hero-unit">
+
+    <div class="alert" ng-show="error || warning" ng-class="{'alert-error':error, 'alert-warning':warning}">
+        <button type="button" class="close" ng-click="error=false;warning=false;">&times;</button>
+        <p>{{answer}}</p>
+    </div>
+
+    <form name="LoginUserForm" class="form-horizontal" ng-submit="login()">
+
+        <div class="form-group" ng-class="{'has-error':!LoginUserForm.mainEmail.$valid, 'has-success': LoginUserForm.mainEmail.$valid}">
+            <label for="inputLogin" class="col-lg-2 control-label">{{'user.login' | i18n}}</label>
+            <div class="col-lg-10">
+                <input type="email" required="" class="form-control" id="inputLogin" name="mainEmail" ng-model="mainEmail" placeholder="{{'user.login.placeholder' | i18n}}">
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':!LoginUserForm.password.$valid, 'has-success': LoginUserForm.password.$valid}">
+            <label for="inputPassword" class="col-lg-2 control-label">{{'user.password' | i18n}}</label>
+            <div class="col-lg-10">
+                <input type="password" required="" ng-minlength="6" class="form-control" id="inputPassword" name="password" ng-model="password" placeholder="{{'user.password.placeholder' | i18n}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-12">
+                <button type="submit" ng-disabled="!LoginUserForm.$valid" class="btn btn-default btn-lg btn-block"><i class="icon-signin"> </i> {{'user.login.action' | i18n}}</button>
+            </div>
+
+            <div class="col-lg-12">
+                <br>
+                <button class="btn btn-default btn-lg btn-block" ng-click="loginFacebook()" ng-disabled="!facebookIsReady">
+                    <i class="icon-facebook-sign"></i>
+                    {{'user.login.facebook' | i18n}}
+                </button>
+            </div>
+
+            <div class="col-lg-12">
+                <hr>
+                <a href="#/user/create" class="btn btn-default btn-lg btn-block">{{'user.create' | i18n}}</a>
+            </div>
+
+        </div>
+    </form>
+
+</div>
