@@ -197,11 +197,12 @@ module.exports = function (grunt) {
           removeEmptyAttributes: true,
           removeOptionalTags: true*/
         },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>'
-        }]
+          files: [{
+              expand: true,
+              cwd: '<%= yeoman.app %>',
+              src: ['*.html', 'views/{,*/}*.html'],
+              dest: '<%= yeoman.dist %>'
+          }]
       }
     },
     cdnify: {
@@ -289,7 +290,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'imagemin',
     'cssmin',
-    //'htmlmin',
+    'htmlmin',
     'concat',
     'copy',
     'cdnify',
