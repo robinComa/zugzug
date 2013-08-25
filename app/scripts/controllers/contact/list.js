@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zugzugApp')
-    .controller('ContactListCtrl', function ($rootScope, $scope, User, I18n, $cookieStore, Facebook) {
+    .controller('ContactListCtrl', function ($rootScope, $scope, User, $i18n, $cookieStore, Facebook) {
 
         $scope.user = $cookieStore.get('user');
 

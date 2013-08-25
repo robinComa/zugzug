@@ -18,7 +18,7 @@ angular.module('facebook', ['ngResource'])
         window.fbAsyncInit = function() {
             // init the FB JS SDK
             FB.init({
-                appId  : '463627307038698',
+                appId  : '408979389207877',
                 status : true,
                 cookie : true,
                 xfbml  : true
