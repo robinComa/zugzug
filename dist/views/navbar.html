@@ -1,0 +1,13 @@
+<nav class="navbar navbar-fixed-top" ng-controller="NavBarCtrl" role="navigation">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+        <button class="btn navbar-btn pull-right" ng-click="logout()" ng-show="isAuth">
+            <i class="icon-signout"></i> {{'user.logout.action' | i18n}}
+        </button>
+        <a href="#" class="navbar-brand">Zug Zug</a>
+
+    </div>
+
+</nav>

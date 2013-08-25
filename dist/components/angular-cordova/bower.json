@@ -1,0 +1,23 @@
+{
+  "name": "angular-cordova",
+  "version": "0.1.1",
+  "main": "src/angular-cordova.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "angular": "~1.0.7",
+    "cordova": "~2.7.0"
+  },
+  "gitHead": "a09839eebab7dbaaaec90ce545bd1ce5cc6fc086",
+  "readme": "# Cordova Angular suite\n\nThe purpose of this repository for now is to be able to run real cordova tests on an iOS device (without mocking up the native part).\n\nWork is in progress with [node-ios-browser](https://github.com/mgcrea/node-ios-browser).\n\nOnly working implementation so far is with a custom suite using testem.\n\n\n## [Testem](https://github.com/airportyh/testem)\n\nTest are working with a custom suite `testem -f test/testem-cordova.json --browsers ios`.\n\nTest are failing with the provided jasmine suite `testem -f test/testem.json --browsers ios`.\n\n## [Karma](https://github.com/karma-runner/karma)\n\nTests are failing with `karma start test/karma.conf.js --browsers ios-browser`.\n\n\n## Authors\n\n**Olivier Louvignes**\n\n+ http://olouv.com\n+ http://github.com/mgcrea",
+  "readmeFilename": "Readme.md",
+  "_id": "angular-cordova@0.1.1",
+  "description": "The purpose of this repository for now is to be able to run real cordova tests on an iOS device (without mocking up the native part).",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mgcrea/angular-cordova.git"
+  }
+}

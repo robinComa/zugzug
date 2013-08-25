@@ -1,0 +1,18 @@
+{
+  "name": "cordova",
+  "version": "2.7.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mgcrea/bower-cordova.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "gitHead": "550b9a9d0d2b05192eb88ea5746cfaab7876ad53",
+  "readme": "bower-cordova\n=============\n\n[cordova-js](https://github.com/apache/cordova-js) bower repository",
+  "readmeFilename": "README.md",
+  "_id": "cordova@2.7.0",
+  "description": "bower-cordova ============="
+}
